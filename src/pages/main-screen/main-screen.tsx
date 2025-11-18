@@ -1,10 +1,10 @@
-import { OffersCard } from '../../components/offers-card/offers-card';
+import OfferCard from '../../components/offer-card/offer-card';
 
 type MainScreenProps = {
     offersCount: number;
 }
 
-function MainScreen ({ offersCount = 0 }: MainScreenProps): JSX.Element {
+export default function MainScreen ({ offersCount = 0 }: MainScreenProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -94,7 +94,7 @@ function MainScreen ({ offersCount = 0 }: MainScreenProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {Array.from({ length: offersCount }, () => <OffersCard />)}
+                {Array.from({ length: offersCount }, () => <OfferCard />)}
               </div>
             </section>
             <div className="cities__right-section">
@@ -106,5 +106,3 @@ function MainScreen ({ offersCount = 0 }: MainScreenProps): JSX.Element {
     </div>
   );
 }
-
-export {MainScreen};

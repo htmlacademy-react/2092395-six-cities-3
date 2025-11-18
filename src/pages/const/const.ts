@@ -1,6 +1,6 @@
-const OFFERS_CARDS_COUNT = 10;
+const OFFER_CARDS_COUNT = 10;
 
 
 export {
-  OFFERS_CARDS_COUNT,
+  OFFER_CARDS_COUNT,
 };
