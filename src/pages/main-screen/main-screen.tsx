@@ -1,4 +1,5 @@
 import OfferCard from '../../components/offer-card/offer-card';
+import { CITIES, placesOptions } from '../const/const.ts';
 
 type MainScreenProps = {
     offersCount: number;
@@ -40,36 +41,13 @@ export default function MainScreen ({ offersCount = 0 }: MainScreenProps): JSX.E
         <div className="tabs">
           <section className="locations container">
             <ul className="locations__list tabs__list">
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Paris</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Cologne</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Brussels</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item tabs__item--active">
-                  <span>Amsterdam</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Hamburg</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Dusseldorf</span>
-                </a>
-              </li>
+              {CITIES.map((city) => (
+                <li className="locations__item" key={city}>
+                  <a className="locations__item-link tabs__item" href="#">
+                    <span>{city}</span>
+                  </a>
+                </li>
+              ))}
             </ul>
           </section>
         </div>
@@ -87,10 +65,15 @@ export default function MainScreen ({ offersCount = 0 }: MainScreenProps): JSX.E
                   </svg>
                 </span>
                 <ul className="places__options places__options--custom places__options--opened">
-                  <li className="places__option places__option--active" tabIndex={0}>Popular</li>
-                  <li className="places__option" tabIndex={0}>Price: low to high</li>
-                  <li className="places__option" tabIndex={0}>Price: high to low</li>
-                  <li className="places__option" tabIndex={0}>Top rated first</li>
+                  {placesOptions.map((option) => (
+                    <li
+                      key={option}
+                      className="places__option"
+                      tabIndex={0}
+                    >
+                      {option}
+                    </li>
+                  ))}
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
