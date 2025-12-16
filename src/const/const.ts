@@ -16,6 +16,18 @@ const placesOptions: string[] = [
   'Top rated first',
 ];
 
+export enum AppRoute {
+    Root = '/',
+    Login = '/login',
+    Favorites = '/favorites',
+    Property = '/offer',
+}
+
+export enum AuthorizationStatus {
+    Auth = 'AUTH',
+    NoAuth = 'NO_AUTH',
+    Unknown = 'UNKNOWN',
+}
 
 export {
   OFFER_CARDS_COUNT,
