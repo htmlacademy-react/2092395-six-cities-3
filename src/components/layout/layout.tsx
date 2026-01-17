@@ -1,5 +1,6 @@
 import { Outlet, useLocation } from 'react-router-dom';
-import { AppRoute } from '../../const/const';
+import { AppRoute, AuthorizationStatus } from '../../const/const';
+import { getAuthorizationStatus } from '../../utils/utils';
 
 const getLayoutState = (pathname: AppRoute) => {
   let rootClassName = '';
@@ -20,6 +21,7 @@ const getLayoutState = (pathname: AppRoute) => {
 export default function Layout() {
   const {pathname} = useLocation();
   const {rootClassName, linkClassName, shouldRenderUser} = getLayoutState(pathname as AppRoute);
+  const authorizationStatus = getAuthorizationStatus();
 
   return (
     <div className={`page${rootClassName}`}>

@@ -1,6 +1,6 @@
-const OFFER_CARDS_COUNT: number = 10;
+export const OFFER_CARDS_COUNT: number = 10;
 
-const CITIES: string[] = [
+export const CITIES: string[] = [
   'Paris',
   'Cologne',
   'Brussels',
@@ -9,7 +9,7 @@ const CITIES: string[] = [
   'Dusseldorf',
 ];
 
-const placesOptions: string[] = [
+export const placesOptions: string[] = [
   'Popular',
   'Price: low to high',
   'Price: high to low',
@@ -28,9 +28,3 @@ export enum AuthorizationStatus {
     NoAuth = 'NO_AUTH',
     Unknown = 'UNKNOWN',
 }
-
-export {
-  OFFER_CARDS_COUNT,
-  CITIES,
-  placesOptions,
-};

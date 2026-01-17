@@ -6,13 +6,15 @@ import FavoritesScreen from '../../pages/favorites-screen/favorites-screen';
 import PropertyScreen from '../../pages/property-screen/property-screen';
 import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 import PrivateRoute from '../private-route/private-route';
-import { AppRoute, AuthorizationStatus } from '../../const/const';
+import { AppRoute} from '../../const/const';
+import { getAuthorizationStatus } from '../../utils/utils';
 
 type AppProps = {
   offersCount: number;
 }
 
 export default function App({ offersCount }: AppProps): JSX.Element {
+  const authorizationStatus = getAuthorizationStatus();
   return (
     <BrowserRouter>
       <Routes>
@@ -26,7 +28,11 @@ export default function App({ offersCount }: AppProps): JSX.Element {
           />
           <Route
             path={AppRoute.Login}
-            element={<LoginScreen />}
+            element={(
+              <PrivateRoute authorizationStatus={authorizationStatus} isReverse>
+                <LoginScreen />
+              </PrivateRoute>
+            )}
           />
           <Route
             path={`${AppRoute.Property}/:id`}
@@ -35,7 +41,7 @@ export default function App({ offersCount }: AppProps): JSX.Element {
           <Route path={AppRoute.Favorites}
             element={
               <PrivateRoute
-                authorizationStatus={AuthorizationStatus.NoAuth}
+                authorizationStatus={authorizationStatus}
               >
                 <FavoritesScreen />
               </PrivateRoute>
