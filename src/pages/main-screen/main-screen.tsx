@@ -3,7 +3,7 @@ import type { Offer } from '../../types/types';
 import OfferCardList from '../../components/offer-card-list/offer-card-list.tsx';
 
 type MainScreenProps = {
-    offers: Offer[]
+    offers: Offer[];
 }
 
 export default function MainScreen ({ offers }: MainScreenProps): JSX.Element {

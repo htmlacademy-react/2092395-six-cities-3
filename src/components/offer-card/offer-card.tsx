@@ -9,7 +9,7 @@ type OfferCardProps = Offer & {
   place?: 'cities' | 'favorites';
 };
 
-const Card = ({
+const OfferCard = ({
   id,
   price,
   rating,
@@ -85,4 +85,4 @@ const Card = ({
   );
 };
 
-export default Card;
+export default OfferCard;
