@@ -1,10 +1,9 @@
-import { CITIES, placesOptions } from '../../const/const.ts';
 import type { City, Offer } from '../../types/types';
 import OfferCardList from '../../components/offer-card-list/offer-card-list.tsx';
 import Map from '../../components/map/map';
 
 type MainScreenProps = {
-  city: City,
+  city: City;
   offers: Offer[];
 }
 

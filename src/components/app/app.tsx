@@ -13,7 +13,7 @@ import type { City, Offer } from '../../types/types';
 
 type AppProps = {
   city: City;
-  offers: Offer[]
+  offers: Offer[];
 }
 
 export default function App({ city, offers }: AppProps): JSX.Element {
@@ -41,12 +41,11 @@ export default function App({ city, offers }: AppProps): JSX.Element {
             path={`${AppRoute.Property}/:id`}
             element={<PropertyScreen />}
           />
-          <Route path={AppRoute.Favorites}
+          <Route
+            path={AppRoute.Favorites}
             element={
-              <PrivateRoute
-                authorizationStatus={authorizationStatus}
-              >
-                <FavoritesScreen />
+              <PrivateRoute authorizationStatus={authorizationStatus}>
+                <FavoritesScreen offers={offers} />
               </PrivateRoute>
             }
           />

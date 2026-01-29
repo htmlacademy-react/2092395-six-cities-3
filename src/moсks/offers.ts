@@ -1,6 +1,5 @@
 import type { Offer } from '../types/types';
 
-
 const offers: Offer[] = [
   {
     id: 1,
@@ -11,6 +10,14 @@ const offers: Offer[] = [
     isFavorite: true,
     previewImage: 'img/apartment-01.jpg',
     type: 'apartment',
+    city: {
+      name: 'Amsterdam',
+      location: {
+        latitude: 52.3909553943508,
+        longitude: 4.85309666406198,
+        zoom: 10
+      }
+    },
     location: {
       latitude: 52.3909553943508,
       longitude: 4.85309666406198,
@@ -26,6 +33,14 @@ const offers: Offer[] = [
     isFavorite: false,
     previewImage: 'img/apartment-02.jpg',
     type: 'room',
+    city: {
+      name: 'Amsterdam',
+      location: {
+        latitude: 52.369553943508,
+        longitude: 4.85309666406198,
+        zoom: 10
+      }
+    },
     location: {
       latitude: 52.369553943508,
       longitude: 4.85309666406198,
@@ -41,6 +56,14 @@ const offers: Offer[] = [
     isFavorite: false,
     previewImage: 'img/apartment-03.jpg',
     type: 'house',
+    city: {
+      name: 'Amsterdam',
+      location: {
+        latitude: 52.3909553943508,
+        longitude: 4.929309666406198,
+        zoom: 10
+      }
+    },
     location: {
       latitude: 52.3909553943508,
       longitude: 4.929309666406198,
@@ -56,6 +79,14 @@ const offers: Offer[] = [
     isFavorite: true,
     previewImage: 'img/apartment-01.jpg',
     type: 'hotel',
+    city: {
+      name: 'Amsterdam',
+      location: {
+        latitude: 52.3809553943508,
+        longitude: 4.939309666406198,
+        zoom: 10
+      }
+    },
     location: {
       latitude: 52.3809553943508,
       longitude: 4.939309666406198,
