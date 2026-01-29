@@ -1,12 +1,13 @@
-import { CITIES, placesOptions } from '../../const/const.ts';
-import type { Offer } from '../../types/types';
+import type { City, Offer } from '../../types/types';
 import OfferCardList from '../../components/offer-card-list/offer-card-list.tsx';
+import Map from '../../components/map/map';
 
 type MainScreenProps = {
-    offers: Offer[];
+  city: City;
+  offers: Offer[];
 }
 
-export default function MainScreen ({ offers }: MainScreenProps): JSX.Element {
+export default function MainScreen ({ offers, city }: MainScreenProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <main className="page__main page__main--index">
@@ -14,13 +15,36 @@ export default function MainScreen ({ offers }: MainScreenProps): JSX.Element {
         <div className="tabs">
           <section className="locations container">
             <ul className="locations__list tabs__list">
-              {CITIES.map((city) => (
-                <li className="locations__item" key={city}>
-                  <a className="locations__item-link tabs__item" href="#">
-                    <span>{city}</span>
-                  </a>
-                </li>
-              ))}
+              <li className="locations__item">
+                <a className="locations__item-link tabs__item" href="#">
+                  <span>Paris</span>
+                </a>
+              </li>
+              <li className="locations__item">
+                <a className="locations__item-link tabs__item" href="#">
+                  <span>Cologne</span>
+                </a>
+              </li>
+              <li className="locations__item">
+                <a className="locations__item-link tabs__item" href="#">
+                  <span>Brussels</span>
+                </a>
+              </li>
+              <li className="locations__item">
+                <a className="locations__item-link tabs__item tabs__item--active">
+                  <span>Amsterdam</span>
+                </a>
+              </li>
+              <li className="locations__item">
+                <a className="locations__item-link tabs__item" href="#">
+                  <span>Hamburg</span>
+                </a>
+              </li>
+              <li className="locations__item">
+                <a className="locations__item-link tabs__item" href="#">
+                  <span>Dusseldorf</span>
+                </a>
+              </li>
             </ul>
           </section>
         </div>
@@ -32,27 +56,33 @@ export default function MainScreen ({ offers }: MainScreenProps): JSX.Element {
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
-                  Popular
-                  <svg className="places__sorting-arrow" width={7} height={4}>
-                    <use xlinkHref="#icon-arrow-select" />
+                                  Popular
+                  <svg className="places__sorting-arrow" width="7" height="4">
+                    <use xlinkHref="#icon-arrow-select"></use>
                   </svg>
                 </span>
                 <ul className="places__options places__options--custom places__options--opened">
-                  {placesOptions.map((option) => (
-                    <li
-                      key={option}
-                      className="places__option"
-                      tabIndex={0}
-                    >
-                      {option}
-                    </li>
-                  ))}
+                  <li
+                    className="places__option places__option--active"
+                    tabIndex={0}
+                  >
+                                      Popular
+                  </li>
+                  <li className="places__option" tabIndex={0}>
+                                      Price: low to high
+                  </li>
+                  <li className="places__option" tabIndex={0}>
+                                      Price: high to low
+                  </li>
+                  <li className="places__option" tabIndex={0}>
+                                      Top rated first
+                  </li>
                 </ul>
               </form>
               <OfferCardList offers={offers} />
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map" />
+              <Map locations={offers.map((offer) => offer.location)} city={city} />
             </div>
           </div>
         </div>

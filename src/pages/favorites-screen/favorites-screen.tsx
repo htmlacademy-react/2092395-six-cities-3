@@ -6,17 +6,14 @@ type FavoritesProps = {
 }
 
 export default function FavoritesScreen ({ offers }: FavoritesProps): JSX.Element {
-  const groupedOffersByCity = offers.reduce<{ [key: string ]: Offer[] }>((acc, curr) => {
-    if (curr.isFavorite) {
-      const city = curr.city.name;
-
-      if (!(city in acc)) {
-        acc[city] = [];
+  const groupedOffersByCity = offers.reduce<Record<string, Offer[]>>((acc, offer) => {
+    if (offer.isFavorite) {
+      const cityName = offer.city.name;
+      if (!acc[cityName]) {
+        acc[cityName] = [];
       }
-
-      acc[city].push(curr);
+      acc[cityName].push(offer);
     }
-
     return acc;
   }, {});
 
@@ -27,12 +24,12 @@ export default function FavoritesScreen ({ offers }: FavoritesProps): JSX.Elemen
           <section className="favorites">
             <h1 className="favorites__title">Saved listing</h1>
             <ul className="favorites__list">
-              {Object.entries(groupedOffersByCity).map(([city, groupedOffers]) => (
-                <li className="favorites__locations-items" key={city}>
+              {Object.entries(groupedOffersByCity).map(([cityName, groupedOffers]) => (
+                <li className="favorites__locations-items" key={cityName}>
                   <div className="favorites__locations locations locations--current">
                     <div className="locations__item">
                       <a className="locations__item-link" href="#">
-                        <span>{city}</span>
+                        <span>{cityName}</span>
                       </a>
                     </div>
                   </div>
